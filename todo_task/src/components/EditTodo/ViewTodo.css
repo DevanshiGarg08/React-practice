@@ -1,0 +1,69 @@
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #bea79f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffffff,
+    #bea79f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #bea79f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+.edit-todo {
+  margin: auto;
+  border: 2px #948079 solid;
+  opacity: 0.9;
+  padding: 20px;
+  border-radius: 20px;
+}
+.edit-todo__controls {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0;
+}
+.edit-todo__controls label {
+  color: #948079;
+  text-align: start;
+  width: 30%;
+  justify-self: start;
+  align-self: start;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+
+  display: block;
+}
+.edit-todo__controls span {
+  width: 70%;
+  margin-left: 20px;
+  font: inherit;
+  width: 18rem;
+  max-width: 100%;
+  outline: none;
+  font-weight: 500;
+  word-wrap: break-word;
+}
+.edit-todo__actions {
+  outline: none;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  border-radius: 10px;
+  border: 2px solid #948079;
+  color: #948079;
+  background-color: #fff;
+  padding: 10px;
+}
+.edit-todo__actions:hover {
+  color: #fff;
+  background-color: #948079;
+  cursor: pointer;
+}

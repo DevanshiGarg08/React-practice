@@ -1,0 +1,36 @@
+.todo-item {
+  margin: auto;
+  margin-bottom: 1.5rem;
+  background-color: #584944;
+  opacity: 0.9;
+  border-radius: 12px;
+  box-shadow: 0 1px 8px rgb(0 0 0 / 25%);
+
+  width: 30%;
+}
+
+.todo-item__content {
+  display: flex;
+  flex-direction: row;
+}
+
+.todo-item__label {
+  text-align: start;
+  width: 30%;
+  justify-self: start;
+  align-self: start;
+  font-weight: bold;
+  margin-left: 20px;
+  color: #ccc;
+  padding: 0.4rem;
+}
+.todo-item__context {
+  width: 70%;
+  margin-left: 20px;
+  font-weight: normal;
+  margin-bottom: 0.3rem;
+  justify-self: start;
+  align-self: start;
+  padding: 0.4rem;
+  color: #ccc;
+}

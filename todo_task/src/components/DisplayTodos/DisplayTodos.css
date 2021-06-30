@@ -1,0 +1,45 @@
+.display-todos {
+  background: #bea79f; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ffffff,
+    #bea79f
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #ffffff,
+    #bea79f
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 100vh;
+  width: 100vw;
+
+  justify-content: center;
+  align-items: center;
+}
+.display-todos__title {
+  font-weight: bold;
+  margin-bottom: 0.4rem;
+  font-size: 30px;
+  display: block;
+  color: #948079;
+  padding: 2rem;
+}
+.display-todos__button {
+  outline: none;
+  font-weight: bolder;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  /* width: 30%; */
+  border-radius: 10px;
+  border: 2px solid #948079;
+  color: #948079;
+  background-color: #fff;
+  padding: 10px;
+  margin-left: 50%;
+}
+.display-todos__button:hover {
+  color: #fff;
+  background-color: #948079;
+  cursor: pointer;
+}
