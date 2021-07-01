@@ -3,8 +3,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { v4 as uuidv4 } from "uuid";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+
 class TodoForm extends Component {
   constructor() {
     super();
@@ -13,7 +12,7 @@ class TodoForm extends Component {
       createdBy: "",
       dateOfCreation: null,
       summary: "",
-      deadline: new Date(),
+      deadline: "",
     };
   }
 
@@ -35,10 +34,10 @@ class TodoForm extends Component {
     });
   }
 
-  setDeadline(date) {
+  setDeadline(event) {
     this.setState(
       {
-        deadline: date,
+        deadline: event.target.value,
       },
       () => {
         console.log(`this.state.deadline`, this.state.deadline);
@@ -94,10 +93,7 @@ class TodoForm extends Component {
             </div>
             <div className="todo-form__controls">
               <label>Deadline</label>
-              <DatePicker
-                selected={this.state.deadline}
-                onChange={this.setDeadline.bind(this)}
-              ></DatePicker>
+              <input type="text" onChange={this.setDeadline.bind(this)}></input>
             </div>
             <div
               style={{
