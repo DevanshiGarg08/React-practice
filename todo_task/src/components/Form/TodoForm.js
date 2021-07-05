@@ -35,14 +35,9 @@ class TodoForm extends Component {
   }
 
   setDeadline(event) {
-    this.setState(
-      {
-        deadline: event.target.value,
-      },
-      () => {
-        console.log(`this.state.deadline`, this.state.deadline);
-      }
-    );
+    this.setState({
+      deadline: event.target.value,
+    });
   }
 
   submitFormHandler(event) {

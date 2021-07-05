@@ -5,13 +5,14 @@
   opacity: 0.9;
   border-radius: 12px;
   box-shadow: 0 1px 8px rgb(0 0 0 / 25%);
-
   width: 30%;
 }
 
 .todo-item__content {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
 .todo-item__label {
