@@ -1,8 +1,7 @@
+import { Component } from "react";
+import { Link } from "react-router-dom";
 import "./DisplayTodos.css";
 import TodoItem from "./TodoItem";
-import { Link } from "react-router-dom";
-import { Component } from "react";
-
 class DisplayTodos extends Component {
   constructor() {
     super();
@@ -12,15 +11,21 @@ class DisplayTodos extends Component {
   }
   componentDidMount() {
     const formData = localStorage.getItem("FORM_DATA");
+    this.setState({
+      todos: JSON.parse(formData),
+    });
+  }
+  handleDelete(id) {
+    const formData = localStorage.getItem("FORM_DATA");
+    const data = JSON.parse(formData);
+    var updatedTodos = data.filter((item) => {
+      return item.id !== id;
+    });
 
-    this.setState(
-      {
-        todos: JSON.parse(formData),
-      },
-      () => {
-        console.log(this.state.todos);
-      }
-    );
+    localStorage.setItem("FORM_DATA", JSON.stringify(updatedTodos));
+    this.setState({
+      todos: updatedTodos,
+    });
   }
   render() {
     return (
@@ -31,11 +36,16 @@ class DisplayTodos extends Component {
         </Link>
         {this.state.todos &&
           this.state.todos.map((todo) => {
-            return <TodoItem key={todo.id} todo={todo} />;
+            return (
+              <TodoItem
+                key={todo.id}
+                todo={todo}
+                handleDelete={this.handleDelete.bind(this)}
+              />
+            );
           })}
       </div>
     );
   }
 }
-
 export default DisplayTodos;
