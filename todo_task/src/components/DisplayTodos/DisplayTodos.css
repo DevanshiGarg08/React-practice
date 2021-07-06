@@ -23,6 +23,7 @@
   display: block;
   color: #948079;
   padding: 2rem;
+  text-align: center;
 }
 .display-todos__button {
   outline: none;
@@ -36,7 +37,7 @@
   color: #948079;
   background-color: #fff;
   padding: 10px;
-  margin-left: 50%;
+  margin-left: 70%;
 }
 .display-todos__button:hover {
   color: #fff;

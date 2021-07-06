@@ -44,25 +44,88 @@ class TodoItem extends Component {
                 </div>
               </div>
             </div>
-            {/* <div
+            <div
               className="todo-item__delete"
-              // onClick={() => {
-              //   this.props.handleDelete(this.props.todo.id);
-              //   this.openModal.bind(this);
-              // }}
               onClick={this.openModal.bind(this)}
             >
               <DeleteIcon />
               <Modal
+                style={{
+                  overlay: {
+                    position: "fixed",
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: "rgba(0,0,0,0.3)",
+                  },
+                  content: {
+                    position: "relative",
+                    top: "50%",
+                    left: "50%",
+                    border: "1px solid black",
+                    background: "black",
+
+                    overflow: "auto",
+                    WebkitOverflowScrolling: "touch",
+                    borderRadius: "4px",
+                    outline: "none",
+                    padding: "20px",
+                    height: 70,
+                    width: 400,
+                    transform: "translate(-50%,-50%)",
+                  },
+                }}
                 isOpen={this.state.showModal}
                 ariaHideApp={false}
                 onRequestClose={this.closeModal.bind(this)}
               >
-                <h2>Hello</h2>
-                <div>I am a modal</div>
-                <button onClick={this.closeModal.bind(this)}>close</button>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "white",
+                      padding: "1rem",
+                      fontSize: "25",
+                      fontWeight: "bolder",
+                      margin: "auto",
+                    }}
+                  >
+                    Are you sure?
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                    }}
+                  >
+                    <button
+                      onClick={this.closeModal.bind(this)}
+                      style={{
+                        marginRight: "10px",
+                      }}
+                    >
+                      cancel
+                    </button>
+                    <button
+                      onClick={() => {
+                        this.props.handleDelete(this.props.todo.id);
+
+                        this.closeModal.bind(this);
+                      }}
+                    >
+                      delete
+                    </button>
+                  </div>
+                </div>
               </Modal>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

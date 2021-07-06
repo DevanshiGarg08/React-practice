@@ -7,15 +7,15 @@
   box-shadow: 0 1px 8px rgb(0 0 0 / 25%);
   max-width: 30%;
 }
-​ .todo-item__content {
+.todo-item__content {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 }
-​ .todo-item__label {
+.todo-item__label {
   text-align: start;
-  width: 30%;
+  width: 40%;
   justify-self: start;
   align-self: start;
   font-weight: bold;
@@ -42,7 +42,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: "100%";
+  width: 100%;
 }
 .todo-item__edit {
   width: 80%;
