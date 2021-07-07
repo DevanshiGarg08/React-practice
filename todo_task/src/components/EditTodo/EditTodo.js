@@ -2,7 +2,8 @@ import "./EditTodo.css";
 import { Component } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
-
+import { connect } from "react-redux";
+import { editTodo } from "../../redux/action";
 class EditTodo extends Component {
   constructor() {
     super();
@@ -17,9 +18,8 @@ class EditTodo extends Component {
     };
   }
   componentDidMount() {
-    const formData = localStorage.getItem("FORM_DATA");
-    const data = JSON.parse(formData);
-    console.log(`data`, data);
+    const data = this.props.todos;
+
     for (let i = 0; i < data.length; i++) {
       if (data[i].id === this.props.match.params.id) {
         this.setState(
@@ -71,18 +71,7 @@ class EditTodo extends Component {
   }
 
   async onSubmitHandler() {
-    console.log(this.state.editTodo);
-    const formData = localStorage.getItem("FORM_DATA");
-    const data = JSON.parse(formData);
-    console.log(`data`, data);
-    var updatedTodos = data.map((item) => {
-      if (item.id === this.props.match.params.id) {
-        return this.state.editTodo;
-      }
-      return item;
-    });
-    console.log(`updatedTodos`, updatedTodos);
-    localStorage.setItem("FORM_DATA", JSON.stringify(updatedTodos));
+    this.props.editTodo({ ...this.state.editTodo, id: this.state.editTodo.id });
   }
 
   render() {
@@ -154,4 +143,19 @@ class EditTodo extends Component {
   }
 }
 
-export default withRouter(EditTodo);
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    editTodo: (todo) => dispatch(editTodo(todo)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withRouter(EditTodo));

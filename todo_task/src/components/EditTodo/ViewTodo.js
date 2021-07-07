@@ -2,6 +2,7 @@ import "./ViewTodo.css";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { Component } from "react";
+import { connect } from "react-redux";
 class ViewTodo extends Component {
   constructor() {
     super();
@@ -10,13 +11,10 @@ class ViewTodo extends Component {
     };
   }
   componentDidMount() {
-    const formData = localStorage.getItem("FORM_DATA");
-    const data = JSON.parse(formData);
-    console.log(`data`, data);
+    const data = this.props.todos;
+
     for (let i = 0; i < data.length; i++) {
-      // console.log(this.props.match.params);
       if (data[i].id === this.props.match.params.id) {
-        // console.log(this.state.todoList);
         this.setState(
           {
             todo: data[i],
@@ -27,8 +25,6 @@ class ViewTodo extends Component {
         );
       }
     }
-
-    // console.log(this.props.match.params);
   }
   render() {
     return (
@@ -82,5 +78,10 @@ class ViewTodo extends Component {
     );
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    todos: state.todos,
+  };
+};
 
-export default withRouter(ViewTodo);
+export default connect(mapStateToProps)(withRouter(ViewTodo));

@@ -3,7 +3,8 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { v4 as uuidv4 } from "uuid";
-
+import { connect } from "react-redux";
+import { addTodo } from "../../redux/action";
 class TodoForm extends Component {
   constructor() {
     super();
@@ -42,23 +43,13 @@ class TodoForm extends Component {
 
   submitFormHandler(event) {
     event.preventDefault();
+    var todoList = {
+      ...this.state,
+      dateOfCreation: new Date().toLocaleDateString(),
+      id: uuidv4(),
+    };
 
-    if (localStorage.getItem("FORM_DATA") === null) {
-      var todoList = [];
-    } else {
-      todoList = JSON.parse(localStorage.getItem("FORM_DATA"));
-    }
-    localStorage.setItem(
-      "FORM_DATA",
-      JSON.stringify([
-        ...todoList,
-        {
-          ...this.state,
-          dateOfCreation: new Date().toLocaleDateString(),
-          id: uuidv4(),
-        },
-      ])
-    );
+    this.props.addTodo(todoList);
     this.props.history.push("/");
   }
 
@@ -121,4 +112,9 @@ class TodoForm extends Component {
   }
 }
 
-export default withRouter(TodoForm);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTodo: (todo) => dispatch(addTodo(todo)),
+  };
+};
+export default connect(null, mapDispatchToProps)(withRouter(TodoForm));
